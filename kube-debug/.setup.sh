@@ -19,3 +19,5 @@ git clone https://github.com/replicahq/interview-prompts.git
 cd interview-prompts/kube-debug
 docker build -t dice .
 kubectl apply -f deployment.yaml
+
+clear
