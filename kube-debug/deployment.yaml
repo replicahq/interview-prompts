@@ -29,6 +29,7 @@ spec:
       containers:
       - name: "server"
         image: dice
+        imagePullPolicy: Never
         envFrom:
         - secretRef:
             name: dice
