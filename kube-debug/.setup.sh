@@ -2,6 +2,7 @@
 #
 # This script is intended to be run from https://labs.play-with-k8s.com/ and will set up a single node kube cluster,
 # install a text editor, clone the interview-prompts repo, and build the docker image.
+#     curl https://raw.githubusercontent.com/replicahq/interview-prompts/master/kube-debug/.setup.sh | bash && cd interview-prompt/kube-debug
 
 set -o errexit
 set -o nounset
