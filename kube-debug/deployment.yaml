@@ -1,0 +1,42 @@
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "dice"
+  labels:
+    app: "dice"
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: "dice"
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "dice"
+  labels:
+    app: "dice"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "dice"
+  template:
+    metadata:
+      labels:
+        app: "dice"
+    spec:
+      containers:
+      - name: "server"
+        image: dice
+        envFrom:
+        - secretRef:
+            name: dice
+            optional: true
+        ports:
+        - name: "http"
+          containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: "http"
